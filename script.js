@@ -37,6 +37,12 @@ function toggleAlarm (AlarmId) {
         currentAlarm.alarmActive=!currentAlarm.alarmActive;
         renderList();
         alert('ALarm toggled successfully');
+        if(setAlarmBtn.innerText=="CLEAR ALARM"){
+        
+            ringtone.pause();
+            content.classList.remove("disable");
+            setAlarmBtn.innerText="SET ALARM";
+        }
         return;
       }
       alert('Alarm not toggled successfully');
@@ -96,10 +102,10 @@ setInterval(function digitalclock(){
      
     currentTime.innerText=`${h}:${m}:${s} ${ampm}`;
     for( let i=0;i<alarmsArray.length;i++){
-     if(alarmsArray[i].alarmTime == `${h}:${m}:${ampm}`&& alarmsArray[i].alarmActive==true){
+     if((alarmsArray[i].alarmTime == `${h}:${m}:${ampm}`)&&( alarmsArray[i].alarmActive==true)){
         ringtone.play();
         ringtone.loop=true;
-         clear=alarmsArray[i];
+         clear=alarmsArray[i].id;
         content.classList.add("disable");
         setAlarmBtn.innerText="CLEAR ALARM";
         
@@ -114,7 +120,7 @@ function setAlarm(){
         ringtone.pause();
         content.classList.remove("disable");
         setAlarmBtn.innerText="SET ALARM";
-        clear.alarmActive=false;
+        deleteAlarm(clear);
         return;
     }
     let time=`${selectMenu[0].value}:${selectMenu[1].value}:${selectMenu[2].value}`
