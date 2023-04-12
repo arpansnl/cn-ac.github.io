@@ -10,13 +10,14 @@ body, .wrapper{
     justify-content: center;
 }
 body{
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: rgb(67, 96, 239);
+    background:linear-gradient(rgb(67, 96, 239),white);
 }
 .wrapper{
     width:500px;
-    background-color: white;
+    background: linear-gradient(white,pink);
     
     border-radius: 10px;
    flex-direction: column;

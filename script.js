@@ -53,6 +53,12 @@ function deleteAlarm (alarmId) {
         return alarm.id !== Number(alarmId);
     });
     alarmsArray=newAlarms;
+    if(setAlarmBtn.innerText=="CLEAR ALARM"){
+        
+        ringtone.pause();
+        content.classList.remove("disable");
+        setAlarmBtn.innerText="SET ALARM";
+    }
     renderList();
     alert('Alarm deleted successfully');
 }
